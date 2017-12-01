@@ -1,0 +1,141 @@
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-dropdownhover.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+
+<script type="text/javascript">
+    var dom = document.getElementById("genderChart");
+    var myChart = echarts.init(dom);
+    var app = {};
+    option = null;
+    option = {
+    title : {
+        text: 'Gender',
+        x:'left'
+    },
+    color: ['#268ec6','#1bbc9c','#ff8b38'],
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: 'horizontal',
+        left: 'center',
+        data: ['Male', 'Female', 'Unknown']
+    },
+    series : [
+        {
+            name: 'Perx',
+            type: 'pie',
+            radius : '30%',
+            center: ['85%', '60%'],
+            data:[
+                {value:48, name:'Male'},
+                {value:48, name:'Female'},
+                {value:4, name:'Unknown'}
+               
+            ],
+            itemStyle: {
+                normal : {
+                    label : {
+                        show: true
+                         
+                    },
+                    labelLine : {
+                        show : true
+                    }
+                },
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        },
+        {
+            name: 'Dargal',
+            type: 'pie',
+            radius : '30%',
+            center: ['61%', '60%'],
+            data:[
+                {value:49, name:'Male'},
+                {value:50, name:'Female'},
+                {value:1, name:'Unknown'}
+            ],
+            itemStyle: {
+                normal : {
+                    label : {
+                        show: true
+                         
+                    },
+                    labelLine : {
+                        show : true
+                    }
+                },
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        },
+        {
+            name: 'TIS',
+            type: 'pie',
+            radius : '30%',
+            center: ['38%', '60%'],
+            data:[
+                {value:47, name:'Male'},
+                {value:49, name:'Female'},
+                {value:4, name:'Unknown'}
+            ],
+            itemStyle: {
+                normal : {
+                    label : {
+                        show: true
+                         
+                    },
+                    labelLine : {
+                        show : true
+                    }
+                },
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        },
+        {
+            name: 'Touchdown',
+            type: 'pie',
+            radius : '30%',
+            center: ['15%', '60%'],
+            data:[
+                {value:50, name:'Male'},
+                {value:47, name:'Female'},
+                {value:4, name:'Unknown'}
+            ],
+            itemStyle: {
+                normal : {
+                    label : {
+                        show: true
+                         
+                    },
+                    labelLine : {
+                        show : true
+                    }
+                },
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+    };
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
