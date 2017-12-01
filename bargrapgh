@@ -1,0 +1,134 @@
+   
+   ***external JSON****
+   {
+   "name":["Perx","Dargal","TIS","Touchdown"],
+    "Eighteen":[4520,695,450,521],
+    "Thirty":[8563,4562,1422,985],
+    "Fifty":[12485,6985,2548,1247],
+    "Seventy":[6585,4512,3561,1452],
+    "Hundred":[524,122,56,36]
+}
+
+      ************  
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   <div id="ageChart" style="height: 350px; width: 100%;"></div>
+  <script type="text/javascript" src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-dropdownhover.min.js"></script>
+	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+  var chart1 = echarts.init(document.getElementById('ageChart'));
+    chart1.showLoading();
+    $.getJSON('age.json', function (data123) {
+    var labelOption = {
+            normal: {
+                show: true,
+                position: 'insideBottom',
+                distance: 38,
+                align: 'center',
+                verticalAlign: 'middle',
+                rotate: 90,
+                formatter: '{c} {resort|{a}}',
+                fontSize: 12,
+                rich: {
+                    name: {
+                        textBorderColor: '#fff'
+                    }
+                }
+            }
+        }; 
+    chart1.hideLoading();
+
+    option = {
+        color: ['#268ec6','#1bbc9c','#ff8b38','#0067b1','#009900'],
+        tooltip : {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow',
+                label: {
+                    show: true
+                }
+            }
+        },
+        toolbox: {
+            show : false,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType: {show: true, type: ['line', 'bar']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        legend: {
+            data:['0-18', '19-30', '31-50', '51-70', '71-100'],
+            itemGap: 1
+        },
+        grid: {
+            top: '12%',
+            left: '1%',
+            right: '10%',
+            containLabel: true
+        },
+        calculable: true,
+        xAxis: [
+            {
+                type : 'category',
+                axisTick: {show: false},
+                data : data123.name
+            }
+        ],
+        yAxis: [
+            {
+                type : 'value',
+                name : 'Age Groups',
+                
+            }
+        ],
+        
+        series : [
+            {
+                name: '0-18',
+                type: 'bar',
+                barGap: 0,
+                label: labelOption,
+                data: data123.Eighteen
+                
+            },
+            {
+                name: '19-30',
+                type: 'bar',
+                label: labelOption,
+                data: data123.Thirty
+            },
+            {
+                name: '31-50',
+                type: 'bar',
+                label: labelOption,
+                data: data123.Fifty
+            },
+            {
+                name: '51-70',
+                type: 'bar',
+                label: labelOption,
+                data: data123.Seventy
+            },
+            {
+                name: '71-100',
+                type: 'bar',
+                label: labelOption,
+                data: data123.Hundred
+            }
+        ]
+    };
+    chart1.setOption(option);
+    });
+    
